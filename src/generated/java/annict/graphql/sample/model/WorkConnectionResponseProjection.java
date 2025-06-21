@@ -1,0 +1,94 @@
+package annict.graphql.sample.model;
+
+import com.kobylynskyi.graphql.codegen.model.graphql.GraphQLResponseField;
+import com.kobylynskyi.graphql.codegen.model.graphql.GraphQLResponseProjection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+
+/**
+ * Response projection for WorkConnection
+ */
+@javax.annotation.processing.Generated(
+    value = "com.kobylynskyi.graphql.codegen.GraphQLCodegen",
+    date = "2025-06-22T02:10:38+0900"
+)
+public class WorkConnectionResponseProjection extends GraphQLResponseProjection {
+
+    private final Map<String, Integer> projectionDepthOnFields = new HashMap<>();
+
+    public WorkConnectionResponseProjection() {
+    }
+
+    public WorkConnectionResponseProjection(WorkConnectionResponseProjection projection) {
+        super(projection);
+    }
+
+    public WorkConnectionResponseProjection(List<WorkConnectionResponseProjection> projections) {
+        super(projections);
+    }
+
+    public WorkConnectionResponseProjection all$() {
+        return all$(3);
+    }
+
+    public WorkConnectionResponseProjection all$(int maxDepth) {
+        if (projectionDepthOnFields.getOrDefault("WorkConnectionResponseProjection.WorkEdgeResponseProjection.edges", 0) <= maxDepth) {
+            projectionDepthOnFields.put("WorkConnectionResponseProjection.WorkEdgeResponseProjection.edges", projectionDepthOnFields.getOrDefault("WorkConnectionResponseProjection.WorkEdgeResponseProjection.edges", 0) + 1);
+            this.edges(new WorkEdgeResponseProjection().all$(maxDepth - projectionDepthOnFields.getOrDefault("WorkConnectionResponseProjection.WorkEdgeResponseProjection.edges", 0)));
+        }
+        if (projectionDepthOnFields.getOrDefault("WorkConnectionResponseProjection.WorkResponseProjection.nodes", 0) <= maxDepth) {
+            projectionDepthOnFields.put("WorkConnectionResponseProjection.WorkResponseProjection.nodes", projectionDepthOnFields.getOrDefault("WorkConnectionResponseProjection.WorkResponseProjection.nodes", 0) + 1);
+            this.nodes(new WorkResponseProjection().all$(maxDepth - projectionDepthOnFields.getOrDefault("WorkConnectionResponseProjection.WorkResponseProjection.nodes", 0)));
+        }
+        if (projectionDepthOnFields.getOrDefault("WorkConnectionResponseProjection.PageInfoResponseProjection.pageInfo", 0) <= maxDepth) {
+            projectionDepthOnFields.put("WorkConnectionResponseProjection.PageInfoResponseProjection.pageInfo", projectionDepthOnFields.getOrDefault("WorkConnectionResponseProjection.PageInfoResponseProjection.pageInfo", 0) + 1);
+            this.pageInfo(new PageInfoResponseProjection().all$(maxDepth - projectionDepthOnFields.getOrDefault("WorkConnectionResponseProjection.PageInfoResponseProjection.pageInfo", 0)));
+        }
+        this.typename();
+        return this;
+    }
+
+    public WorkConnectionResponseProjection edges(WorkEdgeResponseProjection subProjection) {
+        return edges(null, subProjection);
+    }
+
+    public WorkConnectionResponseProjection edges(String alias, WorkEdgeResponseProjection subProjection) {
+        add$(new GraphQLResponseField("edges").alias(alias).projection(subProjection));
+        return this;
+    }
+
+    public WorkConnectionResponseProjection nodes(WorkResponseProjection subProjection) {
+        return nodes(null, subProjection);
+    }
+
+    public WorkConnectionResponseProjection nodes(String alias, WorkResponseProjection subProjection) {
+        add$(new GraphQLResponseField("nodes").alias(alias).projection(subProjection));
+        return this;
+    }
+
+    public WorkConnectionResponseProjection pageInfo(PageInfoResponseProjection subProjection) {
+        return pageInfo(null, subProjection);
+    }
+
+    public WorkConnectionResponseProjection pageInfo(String alias, PageInfoResponseProjection subProjection) {
+        add$(new GraphQLResponseField("pageInfo").alias(alias).projection(subProjection));
+        return this;
+    }
+
+    public WorkConnectionResponseProjection typename() {
+        return typename(null);
+    }
+
+    public WorkConnectionResponseProjection typename(String alias) {
+        add$(new GraphQLResponseField("__typename").alias(alias));
+        return this;
+    }
+
+    @Override
+    public WorkConnectionResponseProjection deepCopy$() {
+        return new WorkConnectionResponseProjection(this);
+    }
+
+
+}

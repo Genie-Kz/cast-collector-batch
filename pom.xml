@@ -120,14 +120,38 @@
 								<includePattern>schema\.graphql</includePattern>
 							</graphqlSchemas>
 							<outputDir>
-								${project.build.directory}/generated-sources/client</outputDir>
+								${project.basedir}/src/generated/java/</outputDir>
 							<modelPackageName>
 								annict.graphql.sample.model
 							</modelPackageName>
+							<apiPackageName>
+								annict.graphql.sample.api
+							</apiPackageName>							
 							<customTypesMapping>
 								<DateTime>java.time.OffsetDateTime</DateTime>
 							</customTypesMapping>
 							<generateClient>true</generateClient>
+							<modelValidationAnnotation>
+								@jakarta.validation.constraints.NotNull</modelValidationAnnotation>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>
+									${project.basedir}/src/generated/java/</source>
+							</sources>
 						</configuration>
 					</execution>
 				</executions>
