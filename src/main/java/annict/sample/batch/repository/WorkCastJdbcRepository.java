@@ -21,6 +21,7 @@ public class WorkCastJdbcRepository {
             log.info("No works to insert.");
             return;
         }
+        // TODO: merge intoに書き換える
         String sql = """
             INSERT INTO work (annict_id, title, watchers_count)
             VALUES (:annictId, :title, :watchersCount)
@@ -48,6 +49,7 @@ public class WorkCastJdbcRepository {
             log.info("No casts to insert.");
             return;
         }
+        // TODO: merge intoに書き換える
         String sql = """
             INSERT INTO "cast" (annict_id, name, name_en, work_annict_id)
             VALUES (:annictId, :name, :nameEn, :workAnnictId)

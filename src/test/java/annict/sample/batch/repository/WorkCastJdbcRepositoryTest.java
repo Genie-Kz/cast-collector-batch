@@ -23,7 +23,7 @@ class WorkCastJdbcRepositoryTest {
 
     @BeforeEach
     void setUp() {
-        jdbcTemplate.update("DELETE FROM cast");
+        jdbcTemplate.update("DELETE FROM \"cast\"");
         jdbcTemplate.update("DELETE FROM work");
     }
 
