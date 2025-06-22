@@ -116,10 +116,6 @@
 				<executions>
 					<execution>
 						<id>generate-sources-product-client</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>generate</goal>
-						</goals>
 						<configuration>
 							<graphqlSchemas>
 								<includePattern>schema\.graphql</includePattern>
@@ -135,6 +131,7 @@
 							<customTypesMapping>
 								<DateTime>java.time.OffsetDateTime</DateTime>
 							</customTypesMapping>
+							<addGeneratedAnnotation>false</addGeneratedAnnotation>
 							<generateClient>true</generateClient>
 							<modelValidationAnnotation>
 								@jakarta.validation.constraints.NotNull</modelValidationAnnotation>

@@ -11,10 +11,6 @@ import java.util.Set;
 /**
  * Fetches a list of objects given a list of IDs.
  */
-@javax.annotation.processing.Generated(
-    value = "com.kobylynskyi.graphql.codegen.GraphQLCodegen",
-    date = "2025-06-22T12:59:01+0900"
-)
 public class NodesQueryRequest implements GraphQLOperationRequest {
 
     public static final String OPERATION_NAME = "nodes";
@@ -69,10 +65,6 @@ public class NodesQueryRequest implements GraphQLOperationRequest {
         return new NodesQueryRequest.Builder();
     }
 
-    @javax.annotation.processing.Generated(
-        value = "com.kobylynskyi.graphql.codegen.GraphQLCodegen",
-        date = "2025-06-22T12:59:01+0900"
-    )
     public static class Builder {
 
         private String $alias;

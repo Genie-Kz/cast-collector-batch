@@ -5,10 +5,6 @@ import annict.graphql.sample.model.*;
 /**
  * Resolver for Work
  */
-@javax.annotation.processing.Generated(
-    value = "com.kobylynskyi.graphql.codegen.GraphQLCodegen",
-    date = "2025-06-22T12:59:01+0900"
-)
 public interface WorkResolver {
 
     CastConnection casts(Work work, String after, String before, Integer first, Integer last, CastOrder orderBy) throws Exception;

@@ -8,10 +8,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-@javax.annotation.processing.Generated(
-    value = "com.kobylynskyi.graphql.codegen.GraphQLCodegen",
-    date = "2025-06-22T12:59:01+0900"
-)
 public class SearchWorksQueryRequest implements GraphQLOperationRequest {
 
     public static final String OPERATION_NAME = "searchWorks";
@@ -94,10 +90,6 @@ public class SearchWorksQueryRequest implements GraphQLOperationRequest {
         return new SearchWorksQueryRequest.Builder();
     }
 
-    @javax.annotation.processing.Generated(
-        value = "com.kobylynskyi.graphql.codegen.GraphQLCodegen",
-        date = "2025-06-22T12:59:01+0900"
-    )
     public static class Builder {
 
         private String $alias;

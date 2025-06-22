@@ -9,10 +9,6 @@ import java.util.List;
 /**
  * Response projection for ActivityConnection
  */
-@javax.annotation.processing.Generated(
-    value = "com.kobylynskyi.graphql.codegen.GraphQLCodegen",
-    date = "2025-06-22T12:59:00+0900"
-)
 public class ActivityConnectionResponseProjection extends GraphQLResponseProjection {
 
     private final Map<String, Integer> projectionDepthOnFields = new HashMap<>();

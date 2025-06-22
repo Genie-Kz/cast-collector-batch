@@ -6,10 +6,6 @@ import java.util.Map;
 /**
  * Fetches an object given its ID.
  */
-@javax.annotation.processing.Generated(
-    value = "com.kobylynskyi.graphql.codegen.GraphQLCodegen",
-    date = "2025-06-22T12:59:01+0900"
-)
 public class NodeQueryResponse extends GraphQLResult<Map<String, Node>> {
 
     private static final String OPERATION_NAME = "node";

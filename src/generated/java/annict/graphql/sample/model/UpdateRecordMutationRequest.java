@@ -8,10 +8,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-@javax.annotation.processing.Generated(
-    value = "com.kobylynskyi.graphql.codegen.GraphQLCodegen",
-    date = "2025-06-22T12:59:02+0900"
-)
 public class UpdateRecordMutationRequest implements GraphQLOperationRequest {
 
     public static final String OPERATION_NAME = "updateRecord";
@@ -66,10 +62,6 @@ public class UpdateRecordMutationRequest implements GraphQLOperationRequest {
         return new UpdateRecordMutationRequest.Builder();
     }
 
-    @javax.annotation.processing.Generated(
-        value = "com.kobylynskyi.graphql.codegen.GraphQLCodegen",
-        date = "2025-06-22T12:59:02+0900"
-    )
     public static class Builder {
 
         private String $alias;

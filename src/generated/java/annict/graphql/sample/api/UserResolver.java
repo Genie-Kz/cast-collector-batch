@@ -5,10 +5,6 @@ import annict.graphql.sample.model.*;
 /**
  * Resolver for User
  */
-@javax.annotation.processing.Generated(
-    value = "com.kobylynskyi.graphql.codegen.GraphQLCodegen",
-    date = "2025-06-22T12:59:01+0900"
-)
 public interface UserResolver {
 
     ActivityConnection activities(User user, String after, String before, Integer first, Integer last, ActivityOrder orderBy) throws Exception;

@@ -9,10 +9,6 @@ import java.util.List;
 /**
  * Response projection for Cast
  */
-@javax.annotation.processing.Generated(
-    value = "com.kobylynskyi.graphql.codegen.GraphQLCodegen",
-    date = "2025-06-22T12:59:01+0900"
-)
 public class CastResponseProjection extends GraphQLResponseProjection {
 
     private final Map<String, Integer> projectionDepthOnFields = new HashMap<>();

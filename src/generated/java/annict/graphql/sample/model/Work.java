@@ -6,10 +6,6 @@ import java.util.StringJoiner;
 /**
  * An anime title
  */
-@javax.annotation.processing.Generated(
-    value = "com.kobylynskyi.graphql.codegen.GraphQLCodegen",
-    date = "2025-06-22T12:59:00+0900"
-)
 public class Work implements java.io.Serializable, Node {
 
     private static final long serialVersionUID = 1L;
@@ -319,10 +315,6 @@ public class Work implements java.io.Serializable, Node {
         return new Work.Builder();
     }
 
-    @javax.annotation.processing.Generated(
-        value = "com.kobylynskyi.graphql.codegen.GraphQLCodegen",
-        date = "2025-06-22T12:59:00+0900"
-    )
     public static class Builder {
 
         private int annictId;

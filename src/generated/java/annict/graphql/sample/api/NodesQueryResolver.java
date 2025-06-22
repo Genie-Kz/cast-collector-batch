@@ -5,10 +5,6 @@ import annict.graphql.sample.model.*;
 /**
  * Fetches a list of objects given a list of IDs.
  */
-@javax.annotation.processing.Generated(
-    value = "com.kobylynskyi.graphql.codegen.GraphQLCodegen",
-    date = "2025-06-22T12:59:02+0900"
-)
 public interface NodesQueryResolver {
 
     /**
