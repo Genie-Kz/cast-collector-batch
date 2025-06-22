@@ -29,6 +29,9 @@ public class BatchConfig {
     @Bean
     public Step step(Tasklet annictDataProcessTasklet) {
         return new StepBuilder("step1", jobRepository)
-                .tasklet(annictDataProcessTasklet, transactionManager).build();
+                .tasklet(annictDataProcessTasklet, transactionManager)
+                .allowStartIfComplete(true)
+                .build()
+                ;
     }
 }

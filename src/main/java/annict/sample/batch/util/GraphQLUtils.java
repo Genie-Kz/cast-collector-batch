@@ -14,19 +14,18 @@ import lombok.RequiredArgsConstructor;
 public class GraphQLUtils {
 
     private final RestClient restClient;
-    
+
     @Value("${graphql.annict.endpoint}")
     private String endpoint;
 
-
-    public <T extends GraphQLResult> T sendRequest(GraphQLRequest request, Class<T> responseType) {
-        // send graphqu request over http
+    public <T extends GraphQLResult<?>> T sendRequest(GraphQLRequest request,
+            Class<T> responseType) {
         return restClient
-                  .post()
-                  .uri(endpoint)
-                  .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                  .body(request.toHttpJsonBody())
-                  .retrieve()
-                  .body(responseType);
+                .post()
+                .uri(endpoint)
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .body(request.toHttpJsonBody())
+                .retrieve()
+                .body(responseType);
     }
 }

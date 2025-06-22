@@ -1,6 +1,8 @@
 spring:
   application:
     name: annict-graphql
+  main:
+    web-application-type: none
   datasource:
     url: jdbc:postgresql://localhost:5432/testdb
     username: testuser
@@ -8,6 +10,9 @@ spring:
   batch:
     jdbc:
       initialize-schema: never
+server:
+  port: -1
 graphql:
   annict: 
     endpoint: https://api.annict.com/graphql
+    access-token: ${ANNICT_ACCESS_TOKEN}
