@@ -110,6 +110,32 @@
 				</configuration>
 			</plugin>
 			<plugin>
+				<groupId>com.diffplug.spotless</groupId>
+				<artifactId>spotless-maven-plugin</artifactId>
+				<version>2.43.0</version>
+				<configuration>
+					<upToDateCheck>
+						<enabled>false</enabled>
+					</upToDateCheck>
+					<java>
+						<includes>
+							<include>src/main/java/**/*.java</include>
+							<include>src/test/java/**/*.java</include>
+						</includes>
+						<trimTrailingWhitespace />
+						<endWithNewline />
+						<indent>
+							<spaces>true</spaces>
+							<spacesPerTab>4</spacesPerTab>
+						</indent>
+						<googleJavaFormat>
+							<style>AOSP</style>
+						</googleJavaFormat>
+						<importOrder/>
+					</java>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>io.github.kobylynskyi</groupId>
 				<artifactId>graphql-codegen-maven-plugin</artifactId>
 				<version>${graphql-java-codegen.version}</version>

@@ -1,13 +1,5 @@
 package annict.sample.batch.tasklet;
 
-import java.util.List;
-import org.springframework.batch.core.StepContribution;
-import org.springframework.batch.core.configuration.annotation.StepScope;
-import org.springframework.batch.core.scope.context.ChunkContext;
-import org.springframework.batch.core.step.tasklet.Tasklet;
-import org.springframework.batch.repeat.RepeatStatus;
-import org.springframework.stereotype.Component;
-import com.kobylynskyi.graphql.codegen.model.graphql.GraphQLRequest;
 import annict.graphql.sample.model.OrderDirection;
 import annict.graphql.sample.model.SearchWorksQueryRequest;
 import annict.graphql.sample.model.SearchWorksQueryResponse;
@@ -17,8 +9,17 @@ import annict.graphql.sample.model.WorkOrder;
 import annict.graphql.sample.model.WorkOrderField;
 import annict.graphql.sample.model.WorkResponseProjection;
 import annict.sample.batch.util.GraphQLUtils;
+import com.kobylynskyi.graphql.codegen.model.graphql.GraphQLRequest;
+import java.util.List;
+import java.util.Objects;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.batch.core.StepContribution;
+import org.springframework.batch.core.configuration.annotation.StepScope;
+import org.springframework.batch.core.scope.context.ChunkContext;
+import org.springframework.batch.core.step.tasklet.Tasklet;
+import org.springframework.batch.repeat.RepeatStatus;
+import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component
@@ -32,52 +33,44 @@ public class AnnictDataProcessTasklet implements Tasklet {
             throws Exception {
 
         var workResponseProjection =
-                new WorkResponseProjection()
-                        .id()
-                        .title()
-                        .annictId()
-                        .watchersCount();
+                new WorkResponseProjection().id().title().annictId().watchersCount();
 
         var workEdgeResponseProjection =
-                new WorkEdgeResponseProjection()
-                        .node(workResponseProjection);
+                new WorkEdgeResponseProjection().node(workResponseProjection);
 
         var workConnectionResponseProjection =
-                new WorkConnectionResponseProjection()
-                        .edges(workEdgeResponseProjection);
+                new WorkConnectionResponseProjection().edges(workEdgeResponseProjection);
 
-        var searchWorksQueryRequest = SearchWorksQueryRequest
-                .builder()
-                .setSeasons(List.of("2025-spring"))
-                .setOrderBy(WorkOrder.builder()
-                        .setDirection(OrderDirection.DESC)
-                        .setField(WorkOrderField.WATCHERS_COUNT)
-                        .build())
-                .setFirst(10)
-                .build();
+        var searchWorksQueryRequest =
+                SearchWorksQueryRequest.builder()
+                        .setSeasons(List.of("2025-spring"))
+                        .setOrderBy(
+                                WorkOrder.builder()
+                                        .setDirection(OrderDirection.DESC)
+                                        .setField(WorkOrderField.WATCHERS_COUNT)
+                                        .build())
+                        .setFirst(10)
+                        .build();
 
-        var request =
-                new GraphQLRequest(searchWorksQueryRequest, workConnectionResponseProjection);
+        var request = new GraphQLRequest(searchWorksQueryRequest, workConnectionResponseProjection);
 
-        var response =
-                graphQLUtils.sendRequest(request, SearchWorksQueryResponse.class);
+        var response = graphQLUtils.sendRequest(request, SearchWorksQueryResponse.class);
 
-//        if (Objects.isNull(response)
-//                || Objects.isNull(response.getData())) {
-//            log.error("No data received from GraphQL request");
-//            return RepeatStatus.FINISHED;
-//        }
-        
-        response.searchWorks()
-            .getEdges()
-            .stream()
-            .map(edge -> edge.getNode())
-            .forEach(work -> {
-                log.info("annictId: {} , title: {}, watchersCount: {}",
-                        work.getAnnictId(),
-                        work.getTitle(),
-                        work.getWatchersCount());
-            });
+        if (Objects.isNull(response) || Objects.isNull(response.getData())) {
+            log.error("No data received from GraphQL request");
+            return RepeatStatus.FINISHED;
+        }
+
+        response.searchWorks().getEdges().stream()
+                .map(edge -> edge.getNode())
+                .forEach(
+                        work -> {
+                            log.info(
+                                    "annictId: {} , title: {}, watchersCount: {}",
+                                    work.getAnnictId(),
+                                    work.getTitle(),
+                                    work.getWatchersCount());
+                        });
         ;
 
         return RepeatStatus.FINISHED;

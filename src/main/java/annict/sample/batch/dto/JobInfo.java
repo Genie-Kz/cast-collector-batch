@@ -5,6 +5,4 @@ import org.springframework.stereotype.Component;
 
 @Component
 @JobScope
-public class JobInfo {
-    
-}
+public class JobInfo {}
