@@ -8,7 +8,7 @@ import java.util.StringJoiner;
  */
 @javax.annotation.processing.Generated(
     value = "com.kobylynskyi.graphql.codegen.GraphQLCodegen",
-    date = "2025-06-22T02:10:38+0900"
+    date = "2025-06-22T12:59:00+0900"
 )
 public class UpdateRecordPayload implements java.io.Serializable {
 
@@ -64,7 +64,7 @@ public class UpdateRecordPayload implements java.io.Serializable {
 
     @javax.annotation.processing.Generated(
         value = "com.kobylynskyi.graphql.codegen.GraphQLCodegen",
-        date = "2025-06-22T02:10:38+0900"
+        date = "2025-06-22T12:59:00+0900"
     )
     public static class Builder {
 

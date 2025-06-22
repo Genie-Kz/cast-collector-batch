@@ -1,3 +1,13 @@
 spring:
   application:
-    name: demo-1
+    name: annict-graphql
+  datasource:
+    url: jdbc:postgresql://localhost:5432/testdb
+    username: testuser
+    password: testuser
+  batch:
+    jdbc:
+      initialize-schema: never
+graphql:
+  annict: 
+    endpoint: https://api.annict.com/graphql

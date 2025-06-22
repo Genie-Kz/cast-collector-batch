@@ -53,6 +53,10 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
@@ -112,6 +116,7 @@
 				<executions>
 					<execution>
 						<id>generate-sources-product-client</id>
+						<phase>generate-sources</phase>
 						<goals>
 							<goal>generate</goal>
 						</goals>
@@ -126,7 +131,7 @@
 							</modelPackageName>
 							<apiPackageName>
 								annict.graphql.sample.api
-							</apiPackageName>							
+							</apiPackageName>
 							<customTypesMapping>
 								<DateTime>java.time.OffsetDateTime</DateTime>
 							</customTypesMapping>

@@ -8,7 +8,7 @@ import java.util.StringJoiner;
  */
 @javax.annotation.processing.Generated(
     value = "com.kobylynskyi.graphql.codegen.GraphQLCodegen",
-    date = "2025-06-22T02:10:39+0900"
+    date = "2025-06-22T12:59:01+0900"
 )
 public class CreateReviewInput implements java.io.Serializable {
 
@@ -168,7 +168,7 @@ public class CreateReviewInput implements java.io.Serializable {
 
     @javax.annotation.processing.Generated(
         value = "com.kobylynskyi.graphql.codegen.GraphQLCodegen",
-        date = "2025-06-22T02:10:39+0900"
+        date = "2025-06-22T12:59:01+0900"
     )
     public static class Builder {
 
