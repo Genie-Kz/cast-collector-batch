@@ -12,6 +12,7 @@ public class MultipleRecord implements java.io.Serializable, ActivityItem, Node 
     private java.time.OffsetDateTime createdAt;
     @jakarta.validation.constraints.NotNull
     private String id;
+    private RecordConnection records;
     @jakarta.validation.constraints.NotNull
     private User user;
     @jakarta.validation.constraints.NotNull
@@ -20,10 +21,11 @@ public class MultipleRecord implements java.io.Serializable, ActivityItem, Node 
     public MultipleRecord() {
     }
 
-    public MultipleRecord(int annictId, java.time.OffsetDateTime createdAt, String id, User user, Work work) {
+    public MultipleRecord(int annictId, java.time.OffsetDateTime createdAt, String id, RecordConnection records, User user, Work work) {
         this.annictId = annictId;
         this.createdAt = createdAt;
         this.id = id;
+        this.records = records;
         this.user = user;
         this.work = work;
     }
@@ -55,6 +57,13 @@ public class MultipleRecord implements java.io.Serializable, ActivityItem, Node 
         this.id = id;
     }
 
+    public RecordConnection getRecords() {
+        return records;
+    }
+    public void setRecords(RecordConnection records) {
+        this.records = records;
+    }
+
     public User getUser() {
         return user;
     }
@@ -80,6 +89,9 @@ public class MultipleRecord implements java.io.Serializable, ActivityItem, Node 
         if (id != null) {
             joiner.add("id: " + GraphQLRequestSerializer.getEntry(id));
         }
+        if (records != null) {
+            joiner.add("records: " + GraphQLRequestSerializer.getEntry(records));
+        }
         if (user != null) {
             joiner.add("user: " + GraphQLRequestSerializer.getEntry(user));
         }
@@ -98,6 +110,7 @@ public class MultipleRecord implements java.io.Serializable, ActivityItem, Node 
         private int annictId;
         private java.time.OffsetDateTime createdAt;
         private String id;
+        private RecordConnection records;
         private User user;
         private Work work;
 
@@ -122,6 +135,11 @@ public class MultipleRecord implements java.io.Serializable, ActivityItem, Node 
             return this;
         }
 
+        public Builder setRecords(RecordConnection records) {
+            this.records = records;
+            return this;
+        }
+
         public Builder setUser(User user) {
             this.user = user;
             return this;
@@ -134,7 +152,7 @@ public class MultipleRecord implements java.io.Serializable, ActivityItem, Node 
 
 
         public MultipleRecord build() {
-            return new MultipleRecord(annictId, createdAt, id, user, work);
+            return new MultipleRecord(annictId, createdAt, id, records, user, work);
         }
 
     }

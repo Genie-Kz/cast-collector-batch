@@ -14,17 +14,19 @@ public class Channel implements java.io.Serializable, Node {
     private String id;
     @jakarta.validation.constraints.NotNull
     private String name;
+    private ProgramConnection programs;
     private boolean published;
     private int scChid;
 
     public Channel() {
     }
 
-    public Channel(int annictId, ChannelGroup channelGroup, String id, String name, boolean published, int scChid) {
+    public Channel(int annictId, ChannelGroup channelGroup, String id, String name, ProgramConnection programs, boolean published, int scChid) {
         this.annictId = annictId;
         this.channelGroup = channelGroup;
         this.id = id;
         this.name = name;
+        this.programs = programs;
         this.published = published;
         this.scChid = scChid;
     }
@@ -63,6 +65,13 @@ public class Channel implements java.io.Serializable, Node {
         this.name = name;
     }
 
+    public ProgramConnection getPrograms() {
+        return programs;
+    }
+    public void setPrograms(ProgramConnection programs) {
+        this.programs = programs;
+    }
+
     public boolean getPublished() {
         return published;
     }
@@ -91,6 +100,9 @@ public class Channel implements java.io.Serializable, Node {
         if (name != null) {
             joiner.add("name: " + GraphQLRequestSerializer.getEntry(name));
         }
+        if (programs != null) {
+            joiner.add("programs: " + GraphQLRequestSerializer.getEntry(programs));
+        }
         joiner.add("published: " + GraphQLRequestSerializer.getEntry(published));
         joiner.add("scChid: " + GraphQLRequestSerializer.getEntry(scChid));
         return joiner.toString();
@@ -106,6 +118,7 @@ public class Channel implements java.io.Serializable, Node {
         private ChannelGroup channelGroup;
         private String id;
         private String name;
+        private ProgramConnection programs;
         private boolean published;
         private int scChid;
 
@@ -135,6 +148,11 @@ public class Channel implements java.io.Serializable, Node {
             return this;
         }
 
+        public Builder setPrograms(ProgramConnection programs) {
+            this.programs = programs;
+            return this;
+        }
+
         public Builder setPublished(boolean published) {
             this.published = published;
             return this;
@@ -147,7 +165,7 @@ public class Channel implements java.io.Serializable, Node {
 
 
         public Channel build() {
-            return new Channel(annictId, channelGroup, id, name, published, scChid);
+            return new Channel(annictId, channelGroup, id, name, programs, published, scChid);
         }
 
     }

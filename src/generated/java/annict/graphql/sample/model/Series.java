@@ -16,16 +16,18 @@ public class Series implements java.io.Serializable, Node {
     private String nameEn;
     @jakarta.validation.constraints.NotNull
     private String nameRo;
+    private SeriesWorkConnection works;
 
     public Series() {
     }
 
-    public Series(int annictId, String id, String name, String nameEn, String nameRo) {
+    public Series(int annictId, String id, String name, String nameEn, String nameRo, SeriesWorkConnection works) {
         this.annictId = annictId;
         this.id = id;
         this.name = name;
         this.nameEn = nameEn;
         this.nameRo = nameRo;
+        this.works = works;
     }
 
     public int getAnnictId() {
@@ -69,6 +71,13 @@ public class Series implements java.io.Serializable, Node {
         this.nameRo = nameRo;
     }
 
+    public SeriesWorkConnection getWorks() {
+        return works;
+    }
+    public void setWorks(SeriesWorkConnection works) {
+        this.works = works;
+    }
+
 
     @Override
     public String toString() {
@@ -86,6 +95,9 @@ public class Series implements java.io.Serializable, Node {
         if (nameRo != null) {
             joiner.add("nameRo: " + GraphQLRequestSerializer.getEntry(nameRo));
         }
+        if (works != null) {
+            joiner.add("works: " + GraphQLRequestSerializer.getEntry(works));
+        }
         return joiner.toString();
     }
 
@@ -100,6 +112,7 @@ public class Series implements java.io.Serializable, Node {
         private String name;
         private String nameEn;
         private String nameRo;
+        private SeriesWorkConnection works;
 
         public Builder() {
         }
@@ -132,9 +145,14 @@ public class Series implements java.io.Serializable, Node {
             return this;
         }
 
+        public Builder setWorks(SeriesWorkConnection works) {
+            this.works = works;
+            return this;
+        }
+
 
         public Series build() {
-            return new Series(annictId, id, name, nameEn, nameRo);
+            return new Series(annictId, id, name, nameEn, nameRo, works);
         }
 
     }

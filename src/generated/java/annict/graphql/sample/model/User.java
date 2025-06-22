@@ -7,6 +7,7 @@ public class User implements java.io.Serializable, Node {
 
     private static final long serialVersionUID = 1L;
 
+    private ActivityConnection activities;
     private int annictId;
     private String avatarUrl;
     private String backgroundImageUrl;
@@ -15,14 +16,20 @@ public class User implements java.io.Serializable, Node {
     @jakarta.validation.constraints.NotNull
     private String description;
     private String email;
+    private UserConnection followers;
     private int followersCount;
+    private UserConnection following;
+    private ActivityConnection followingActivities;
     private int followingsCount;
     @jakarta.validation.constraints.NotNull
     private String id;
+    private LibraryEntryConnection libraryEntries;
     @jakarta.validation.constraints.NotNull
     private String name;
     private Integer notificationsCount;
     private int onHoldCount;
+    private ProgramConnection programs;
+    private RecordConnection records;
     private int recordsCount;
     private int stopWatchingCount;
     private String url;
@@ -33,23 +40,31 @@ public class User implements java.io.Serializable, Node {
     private int wannaWatchCount;
     private int watchedCount;
     private int watchingCount;
+    private WorkConnection works;
 
     public User() {
     }
 
-    public User(int annictId, String avatarUrl, String backgroundImageUrl, java.time.OffsetDateTime createdAt, String description, String email, int followersCount, int followingsCount, String id, String name, Integer notificationsCount, int onHoldCount, int recordsCount, int stopWatchingCount, String url, String username, boolean viewerCanFollow, boolean viewerIsFollowing, int wannaWatchCount, int watchedCount, int watchingCount) {
+    public User(ActivityConnection activities, int annictId, String avatarUrl, String backgroundImageUrl, java.time.OffsetDateTime createdAt, String description, String email, UserConnection followers, int followersCount, UserConnection following, ActivityConnection followingActivities, int followingsCount, String id, LibraryEntryConnection libraryEntries, String name, Integer notificationsCount, int onHoldCount, ProgramConnection programs, RecordConnection records, int recordsCount, int stopWatchingCount, String url, String username, boolean viewerCanFollow, boolean viewerIsFollowing, int wannaWatchCount, int watchedCount, int watchingCount, WorkConnection works) {
+        this.activities = activities;
         this.annictId = annictId;
         this.avatarUrl = avatarUrl;
         this.backgroundImageUrl = backgroundImageUrl;
         this.createdAt = createdAt;
         this.description = description;
         this.email = email;
+        this.followers = followers;
         this.followersCount = followersCount;
+        this.following = following;
+        this.followingActivities = followingActivities;
         this.followingsCount = followingsCount;
         this.id = id;
+        this.libraryEntries = libraryEntries;
         this.name = name;
         this.notificationsCount = notificationsCount;
         this.onHoldCount = onHoldCount;
+        this.programs = programs;
+        this.records = records;
         this.recordsCount = recordsCount;
         this.stopWatchingCount = stopWatchingCount;
         this.url = url;
@@ -59,6 +74,14 @@ public class User implements java.io.Serializable, Node {
         this.wannaWatchCount = wannaWatchCount;
         this.watchedCount = watchedCount;
         this.watchingCount = watchingCount;
+        this.works = works;
+    }
+
+    public ActivityConnection getActivities() {
+        return activities;
+    }
+    public void setActivities(ActivityConnection activities) {
+        this.activities = activities;
     }
 
     public int getAnnictId() {
@@ -103,11 +126,32 @@ public class User implements java.io.Serializable, Node {
         this.email = email;
     }
 
+    public UserConnection getFollowers() {
+        return followers;
+    }
+    public void setFollowers(UserConnection followers) {
+        this.followers = followers;
+    }
+
     public int getFollowersCount() {
         return followersCount;
     }
     public void setFollowersCount(int followersCount) {
         this.followersCount = followersCount;
+    }
+
+    public UserConnection getFollowing() {
+        return following;
+    }
+    public void setFollowing(UserConnection following) {
+        this.following = following;
+    }
+
+    public ActivityConnection getFollowingActivities() {
+        return followingActivities;
+    }
+    public void setFollowingActivities(ActivityConnection followingActivities) {
+        this.followingActivities = followingActivities;
     }
 
     public int getFollowingsCount() {
@@ -130,6 +174,13 @@ public class User implements java.io.Serializable, Node {
         this.id = id;
     }
 
+    public LibraryEntryConnection getLibraryEntries() {
+        return libraryEntries;
+    }
+    public void setLibraryEntries(LibraryEntryConnection libraryEntries) {
+        this.libraryEntries = libraryEntries;
+    }
+
     public String getName() {
         return name;
     }
@@ -149,6 +200,20 @@ public class User implements java.io.Serializable, Node {
     }
     public void setOnHoldCount(int onHoldCount) {
         this.onHoldCount = onHoldCount;
+    }
+
+    public ProgramConnection getPrograms() {
+        return programs;
+    }
+    public void setPrograms(ProgramConnection programs) {
+        this.programs = programs;
+    }
+
+    public RecordConnection getRecords() {
+        return records;
+    }
+    public void setRecords(RecordConnection records) {
+        this.records = records;
     }
 
     public int getRecordsCount() {
@@ -214,10 +279,20 @@ public class User implements java.io.Serializable, Node {
         this.watchingCount = watchingCount;
     }
 
+    public WorkConnection getWorks() {
+        return works;
+    }
+    public void setWorks(WorkConnection works) {
+        this.works = works;
+    }
+
 
     @Override
     public String toString() {
         StringJoiner joiner = new StringJoiner(", ", "{ ", " }");
+        if (activities != null) {
+            joiner.add("activities: " + GraphQLRequestSerializer.getEntry(activities));
+        }
         joiner.add("annictId: " + GraphQLRequestSerializer.getEntry(annictId));
         if (avatarUrl != null) {
             joiner.add("avatarUrl: " + GraphQLRequestSerializer.getEntry(avatarUrl));
@@ -234,10 +309,22 @@ public class User implements java.io.Serializable, Node {
         if (email != null) {
             joiner.add("email: " + GraphQLRequestSerializer.getEntry(email));
         }
+        if (followers != null) {
+            joiner.add("followers: " + GraphQLRequestSerializer.getEntry(followers));
+        }
         joiner.add("followersCount: " + GraphQLRequestSerializer.getEntry(followersCount));
+        if (following != null) {
+            joiner.add("following: " + GraphQLRequestSerializer.getEntry(following));
+        }
+        if (followingActivities != null) {
+            joiner.add("followingActivities: " + GraphQLRequestSerializer.getEntry(followingActivities));
+        }
         joiner.add("followingsCount: " + GraphQLRequestSerializer.getEntry(followingsCount));
         if (id != null) {
             joiner.add("id: " + GraphQLRequestSerializer.getEntry(id));
+        }
+        if (libraryEntries != null) {
+            joiner.add("libraryEntries: " + GraphQLRequestSerializer.getEntry(libraryEntries));
         }
         if (name != null) {
             joiner.add("name: " + GraphQLRequestSerializer.getEntry(name));
@@ -246,6 +333,12 @@ public class User implements java.io.Serializable, Node {
             joiner.add("notificationsCount: " + GraphQLRequestSerializer.getEntry(notificationsCount));
         }
         joiner.add("onHoldCount: " + GraphQLRequestSerializer.getEntry(onHoldCount));
+        if (programs != null) {
+            joiner.add("programs: " + GraphQLRequestSerializer.getEntry(programs));
+        }
+        if (records != null) {
+            joiner.add("records: " + GraphQLRequestSerializer.getEntry(records));
+        }
         joiner.add("recordsCount: " + GraphQLRequestSerializer.getEntry(recordsCount));
         joiner.add("stopWatchingCount: " + GraphQLRequestSerializer.getEntry(stopWatchingCount));
         if (url != null) {
@@ -259,6 +352,9 @@ public class User implements java.io.Serializable, Node {
         joiner.add("wannaWatchCount: " + GraphQLRequestSerializer.getEntry(wannaWatchCount));
         joiner.add("watchedCount: " + GraphQLRequestSerializer.getEntry(watchedCount));
         joiner.add("watchingCount: " + GraphQLRequestSerializer.getEntry(watchingCount));
+        if (works != null) {
+            joiner.add("works: " + GraphQLRequestSerializer.getEntry(works));
+        }
         return joiner.toString();
     }
 
@@ -268,18 +364,25 @@ public class User implements java.io.Serializable, Node {
 
     public static class Builder {
 
+        private ActivityConnection activities;
         private int annictId;
         private String avatarUrl;
         private String backgroundImageUrl;
         private java.time.OffsetDateTime createdAt;
         private String description;
         private String email;
+        private UserConnection followers;
         private int followersCount;
+        private UserConnection following;
+        private ActivityConnection followingActivities;
         private int followingsCount;
         private String id;
+        private LibraryEntryConnection libraryEntries;
         private String name;
         private Integer notificationsCount;
         private int onHoldCount;
+        private ProgramConnection programs;
+        private RecordConnection records;
         private int recordsCount;
         private int stopWatchingCount;
         private String url;
@@ -289,8 +392,14 @@ public class User implements java.io.Serializable, Node {
         private int wannaWatchCount;
         private int watchedCount;
         private int watchingCount;
+        private WorkConnection works;
 
         public Builder() {
+        }
+
+        public Builder setActivities(ActivityConnection activities) {
+            this.activities = activities;
+            return this;
         }
 
         public Builder setAnnictId(int annictId) {
@@ -323,8 +432,23 @@ public class User implements java.io.Serializable, Node {
             return this;
         }
 
+        public Builder setFollowers(UserConnection followers) {
+            this.followers = followers;
+            return this;
+        }
+
         public Builder setFollowersCount(int followersCount) {
             this.followersCount = followersCount;
+            return this;
+        }
+
+        public Builder setFollowing(UserConnection following) {
+            this.following = following;
+            return this;
+        }
+
+        public Builder setFollowingActivities(ActivityConnection followingActivities) {
+            this.followingActivities = followingActivities;
             return this;
         }
 
@@ -341,6 +465,11 @@ public class User implements java.io.Serializable, Node {
             return this;
         }
 
+        public Builder setLibraryEntries(LibraryEntryConnection libraryEntries) {
+            this.libraryEntries = libraryEntries;
+            return this;
+        }
+
         public Builder setName(String name) {
             this.name = name;
             return this;
@@ -353,6 +482,16 @@ public class User implements java.io.Serializable, Node {
 
         public Builder setOnHoldCount(int onHoldCount) {
             this.onHoldCount = onHoldCount;
+            return this;
+        }
+
+        public Builder setPrograms(ProgramConnection programs) {
+            this.programs = programs;
+            return this;
+        }
+
+        public Builder setRecords(RecordConnection records) {
+            this.records = records;
             return this;
         }
 
@@ -401,9 +540,14 @@ public class User implements java.io.Serializable, Node {
             return this;
         }
 
+        public Builder setWorks(WorkConnection works) {
+            this.works = works;
+            return this;
+        }
+
 
         public User build() {
-            return new User(annictId, avatarUrl, backgroundImageUrl, createdAt, description, email, followersCount, followingsCount, id, name, notificationsCount, onHoldCount, recordsCount, stopWatchingCount, url, username, viewerCanFollow, viewerIsFollowing, wannaWatchCount, watchedCount, watchingCount);
+            return new User(activities, annictId, avatarUrl, backgroundImageUrl, createdAt, description, email, followers, followersCount, following, followingActivities, followingsCount, id, libraryEntries, name, notificationsCount, onHoldCount, programs, records, recordsCount, stopWatchingCount, url, username, viewerCanFollow, viewerIsFollowing, wannaWatchCount, watchedCount, watchingCount, works);
         }
 
     }

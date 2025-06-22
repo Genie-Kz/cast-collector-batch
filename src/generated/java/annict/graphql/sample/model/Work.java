@@ -11,6 +11,8 @@ public class Work implements java.io.Serializable, Node {
     private static final long serialVersionUID = 1L;
 
     private int annictId;
+    private CastConnection casts;
+    private EpisodeConnection episodes;
     private int episodesCount;
     @jakarta.validation.constraints.NotNull
     private String id;
@@ -21,10 +23,14 @@ public class Work implements java.io.Serializable, Node {
     private boolean noEpisodes;
     private String officialSiteUrl;
     private String officialSiteUrlEn;
+    private ProgramConnection programs;
+    private ReviewConnection reviews;
     private int reviewsCount;
     private Double satisfactionRate;
     private SeasonName seasonName;
     private Integer seasonYear;
+    private SeriesConnection seriesList;
+    private StaffConnection staffs;
     private Integer syobocalTid;
     @jakarta.validation.constraints.NotNull
     private String title;
@@ -41,8 +47,10 @@ public class Work implements java.io.Serializable, Node {
     public Work() {
     }
 
-    public Work(int annictId, int episodesCount, String id, WorkImage image, String malAnimeId, Media media, boolean noEpisodes, String officialSiteUrl, String officialSiteUrlEn, int reviewsCount, Double satisfactionRate, SeasonName seasonName, Integer seasonYear, Integer syobocalTid, String title, String titleEn, String titleKana, String titleRo, String twitterHashtag, String twitterUsername, StatusState viewerStatusState, int watchersCount, String wikipediaUrl, String wikipediaUrlEn) {
+    public Work(int annictId, CastConnection casts, EpisodeConnection episodes, int episodesCount, String id, WorkImage image, String malAnimeId, Media media, boolean noEpisodes, String officialSiteUrl, String officialSiteUrlEn, ProgramConnection programs, ReviewConnection reviews, int reviewsCount, Double satisfactionRate, SeasonName seasonName, Integer seasonYear, SeriesConnection seriesList, StaffConnection staffs, Integer syobocalTid, String title, String titleEn, String titleKana, String titleRo, String twitterHashtag, String twitterUsername, StatusState viewerStatusState, int watchersCount, String wikipediaUrl, String wikipediaUrlEn) {
         this.annictId = annictId;
+        this.casts = casts;
+        this.episodes = episodes;
         this.episodesCount = episodesCount;
         this.id = id;
         this.image = image;
@@ -51,10 +59,14 @@ public class Work implements java.io.Serializable, Node {
         this.noEpisodes = noEpisodes;
         this.officialSiteUrl = officialSiteUrl;
         this.officialSiteUrlEn = officialSiteUrlEn;
+        this.programs = programs;
+        this.reviews = reviews;
         this.reviewsCount = reviewsCount;
         this.satisfactionRate = satisfactionRate;
         this.seasonName = seasonName;
         this.seasonYear = seasonYear;
+        this.seriesList = seriesList;
+        this.staffs = staffs;
         this.syobocalTid = syobocalTid;
         this.title = title;
         this.titleEn = titleEn;
@@ -73,6 +85,20 @@ public class Work implements java.io.Serializable, Node {
     }
     public void setAnnictId(int annictId) {
         this.annictId = annictId;
+    }
+
+    public CastConnection getCasts() {
+        return casts;
+    }
+    public void setCasts(CastConnection casts) {
+        this.casts = casts;
+    }
+
+    public EpisodeConnection getEpisodes() {
+        return episodes;
+    }
+    public void setEpisodes(EpisodeConnection episodes) {
+        this.episodes = episodes;
     }
 
     public int getEpisodesCount() {
@@ -137,6 +163,20 @@ public class Work implements java.io.Serializable, Node {
         this.officialSiteUrlEn = officialSiteUrlEn;
     }
 
+    public ProgramConnection getPrograms() {
+        return programs;
+    }
+    public void setPrograms(ProgramConnection programs) {
+        this.programs = programs;
+    }
+
+    public ReviewConnection getReviews() {
+        return reviews;
+    }
+    public void setReviews(ReviewConnection reviews) {
+        this.reviews = reviews;
+    }
+
     public int getReviewsCount() {
         return reviewsCount;
     }
@@ -163,6 +203,20 @@ public class Work implements java.io.Serializable, Node {
     }
     public void setSeasonYear(Integer seasonYear) {
         this.seasonYear = seasonYear;
+    }
+
+    public SeriesConnection getSeriesList() {
+        return seriesList;
+    }
+    public void setSeriesList(SeriesConnection seriesList) {
+        this.seriesList = seriesList;
+    }
+
+    public StaffConnection getStaffs() {
+        return staffs;
+    }
+    public void setStaffs(StaffConnection staffs) {
+        this.staffs = staffs;
     }
 
     public Integer getSyobocalTid() {
@@ -247,6 +301,12 @@ public class Work implements java.io.Serializable, Node {
     public String toString() {
         StringJoiner joiner = new StringJoiner(", ", "{ ", " }");
         joiner.add("annictId: " + GraphQLRequestSerializer.getEntry(annictId));
+        if (casts != null) {
+            joiner.add("casts: " + GraphQLRequestSerializer.getEntry(casts));
+        }
+        if (episodes != null) {
+            joiner.add("episodes: " + GraphQLRequestSerializer.getEntry(episodes));
+        }
         joiner.add("episodesCount: " + GraphQLRequestSerializer.getEntry(episodesCount));
         if (id != null) {
             joiner.add("id: " + GraphQLRequestSerializer.getEntry(id));
@@ -267,6 +327,12 @@ public class Work implements java.io.Serializable, Node {
         if (officialSiteUrlEn != null) {
             joiner.add("officialSiteUrlEn: " + GraphQLRequestSerializer.getEntry(officialSiteUrlEn));
         }
+        if (programs != null) {
+            joiner.add("programs: " + GraphQLRequestSerializer.getEntry(programs));
+        }
+        if (reviews != null) {
+            joiner.add("reviews: " + GraphQLRequestSerializer.getEntry(reviews));
+        }
         joiner.add("reviewsCount: " + GraphQLRequestSerializer.getEntry(reviewsCount));
         if (satisfactionRate != null) {
             joiner.add("satisfactionRate: " + GraphQLRequestSerializer.getEntry(satisfactionRate));
@@ -276,6 +342,12 @@ public class Work implements java.io.Serializable, Node {
         }
         if (seasonYear != null) {
             joiner.add("seasonYear: " + GraphQLRequestSerializer.getEntry(seasonYear));
+        }
+        if (seriesList != null) {
+            joiner.add("seriesList: " + GraphQLRequestSerializer.getEntry(seriesList));
+        }
+        if (staffs != null) {
+            joiner.add("staffs: " + GraphQLRequestSerializer.getEntry(staffs));
         }
         if (syobocalTid != null) {
             joiner.add("syobocalTid: " + GraphQLRequestSerializer.getEntry(syobocalTid));
@@ -318,6 +390,8 @@ public class Work implements java.io.Serializable, Node {
     public static class Builder {
 
         private int annictId;
+        private CastConnection casts;
+        private EpisodeConnection episodes;
         private int episodesCount;
         private String id;
         private WorkImage image;
@@ -326,10 +400,14 @@ public class Work implements java.io.Serializable, Node {
         private boolean noEpisodes;
         private String officialSiteUrl;
         private String officialSiteUrlEn;
+        private ProgramConnection programs;
+        private ReviewConnection reviews;
         private int reviewsCount;
         private Double satisfactionRate;
         private SeasonName seasonName;
         private Integer seasonYear;
+        private SeriesConnection seriesList;
+        private StaffConnection staffs;
         private Integer syobocalTid;
         private String title;
         private String titleEn;
@@ -347,6 +425,16 @@ public class Work implements java.io.Serializable, Node {
 
         public Builder setAnnictId(int annictId) {
             this.annictId = annictId;
+            return this;
+        }
+
+        public Builder setCasts(CastConnection casts) {
+            this.casts = casts;
+            return this;
+        }
+
+        public Builder setEpisodes(EpisodeConnection episodes) {
+            this.episodes = episodes;
             return this;
         }
 
@@ -393,6 +481,16 @@ public class Work implements java.io.Serializable, Node {
             return this;
         }
 
+        public Builder setPrograms(ProgramConnection programs) {
+            this.programs = programs;
+            return this;
+        }
+
+        public Builder setReviews(ReviewConnection reviews) {
+            this.reviews = reviews;
+            return this;
+        }
+
         public Builder setReviewsCount(int reviewsCount) {
             this.reviewsCount = reviewsCount;
             return this;
@@ -410,6 +508,16 @@ public class Work implements java.io.Serializable, Node {
 
         public Builder setSeasonYear(Integer seasonYear) {
             this.seasonYear = seasonYear;
+            return this;
+        }
+
+        public Builder setSeriesList(SeriesConnection seriesList) {
+            this.seriesList = seriesList;
+            return this;
+        }
+
+        public Builder setStaffs(StaffConnection staffs) {
+            this.staffs = staffs;
             return this;
         }
 
@@ -470,7 +578,7 @@ public class Work implements java.io.Serializable, Node {
 
 
         public Work build() {
-            return new Work(annictId, episodesCount, id, image, malAnimeId, media, noEpisodes, officialSiteUrl, officialSiteUrlEn, reviewsCount, satisfactionRate, seasonName, seasonYear, syobocalTid, title, titleEn, titleKana, titleRo, twitterHashtag, twitterUsername, viewerStatusState, watchersCount, wikipediaUrl, wikipediaUrlEn);
+            return new Work(annictId, casts, episodes, episodesCount, id, image, malAnimeId, media, noEpisodes, officialSiteUrl, officialSiteUrlEn, programs, reviews, reviewsCount, satisfactionRate, seasonName, seasonYear, seriesList, staffs, syobocalTid, title, titleEn, titleKana, titleRo, twitterHashtag, twitterUsername, viewerStatusState, watchersCount, wikipediaUrl, wikipediaUrlEn);
         }
 
     }

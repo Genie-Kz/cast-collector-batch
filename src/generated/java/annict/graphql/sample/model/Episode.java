@@ -18,6 +18,7 @@ public class Episode implements java.io.Serializable, Node {
     private String numberText;
     private Episode prevEpisode;
     private int recordCommentsCount;
+    private RecordConnection records;
     private int recordsCount;
     private Double satisfactionRate;
     private int sortNumber;
@@ -30,7 +31,7 @@ public class Episode implements java.io.Serializable, Node {
     public Episode() {
     }
 
-    public Episode(int annictId, String id, Episode nextEpisode, Integer number, String numberText, Episode prevEpisode, int recordCommentsCount, int recordsCount, Double satisfactionRate, int sortNumber, String title, boolean viewerDidTrack, int viewerRecordsCount, Work work) {
+    public Episode(int annictId, String id, Episode nextEpisode, Integer number, String numberText, Episode prevEpisode, int recordCommentsCount, RecordConnection records, int recordsCount, Double satisfactionRate, int sortNumber, String title, boolean viewerDidTrack, int viewerRecordsCount, Work work) {
         this.annictId = annictId;
         this.id = id;
         this.nextEpisode = nextEpisode;
@@ -38,6 +39,7 @@ public class Episode implements java.io.Serializable, Node {
         this.numberText = numberText;
         this.prevEpisode = prevEpisode;
         this.recordCommentsCount = recordCommentsCount;
+        this.records = records;
         this.recordsCount = recordsCount;
         this.satisfactionRate = satisfactionRate;
         this.sortNumber = sortNumber;
@@ -100,6 +102,13 @@ public class Episode implements java.io.Serializable, Node {
     }
     public void setRecordCommentsCount(int recordCommentsCount) {
         this.recordCommentsCount = recordCommentsCount;
+    }
+
+    public RecordConnection getRecords() {
+        return records;
+    }
+    public void setRecords(RecordConnection records) {
+        this.records = records;
     }
 
     public int getRecordsCount() {
@@ -172,6 +181,9 @@ public class Episode implements java.io.Serializable, Node {
             joiner.add("prevEpisode: " + GraphQLRequestSerializer.getEntry(prevEpisode));
         }
         joiner.add("recordCommentsCount: " + GraphQLRequestSerializer.getEntry(recordCommentsCount));
+        if (records != null) {
+            joiner.add("records: " + GraphQLRequestSerializer.getEntry(records));
+        }
         joiner.add("recordsCount: " + GraphQLRequestSerializer.getEntry(recordsCount));
         if (satisfactionRate != null) {
             joiner.add("satisfactionRate: " + GraphQLRequestSerializer.getEntry(satisfactionRate));
@@ -201,6 +213,7 @@ public class Episode implements java.io.Serializable, Node {
         private String numberText;
         private Episode prevEpisode;
         private int recordCommentsCount;
+        private RecordConnection records;
         private int recordsCount;
         private Double satisfactionRate;
         private int sortNumber;
@@ -250,6 +263,11 @@ public class Episode implements java.io.Serializable, Node {
             return this;
         }
 
+        public Builder setRecords(RecordConnection records) {
+            this.records = records;
+            return this;
+        }
+
         public Builder setRecordsCount(int recordsCount) {
             this.recordsCount = recordsCount;
             return this;
@@ -287,7 +305,7 @@ public class Episode implements java.io.Serializable, Node {
 
 
         public Episode build() {
-            return new Episode(annictId, id, nextEpisode, number, numberText, prevEpisode, recordCommentsCount, recordsCount, satisfactionRate, sortNumber, title, viewerDidTrack, viewerRecordsCount, work);
+            return new Episode(annictId, id, nextEpisode, number, numberText, prevEpisode, recordCommentsCount, records, recordsCount, satisfactionRate, sortNumber, title, viewerDidTrack, viewerRecordsCount, work);
         }
 
     }

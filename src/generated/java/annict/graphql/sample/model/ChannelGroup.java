@@ -8,6 +8,7 @@ public class ChannelGroup implements java.io.Serializable, Node {
     private static final long serialVersionUID = 1L;
 
     private int annictId;
+    private ChannelConnection channels;
     @jakarta.validation.constraints.NotNull
     private String id;
     @jakarta.validation.constraints.NotNull
@@ -17,8 +18,9 @@ public class ChannelGroup implements java.io.Serializable, Node {
     public ChannelGroup() {
     }
 
-    public ChannelGroup(int annictId, String id, String name, int sortNumber) {
+    public ChannelGroup(int annictId, ChannelConnection channels, String id, String name, int sortNumber) {
         this.annictId = annictId;
+        this.channels = channels;
         this.id = id;
         this.name = name;
         this.sortNumber = sortNumber;
@@ -29,6 +31,13 @@ public class ChannelGroup implements java.io.Serializable, Node {
     }
     public void setAnnictId(int annictId) {
         this.annictId = annictId;
+    }
+
+    public ChannelConnection getChannels() {
+        return channels;
+    }
+    public void setChannels(ChannelConnection channels) {
+        this.channels = channels;
     }
 
     /**
@@ -63,6 +72,9 @@ public class ChannelGroup implements java.io.Serializable, Node {
     public String toString() {
         StringJoiner joiner = new StringJoiner(", ", "{ ", " }");
         joiner.add("annictId: " + GraphQLRequestSerializer.getEntry(annictId));
+        if (channels != null) {
+            joiner.add("channels: " + GraphQLRequestSerializer.getEntry(channels));
+        }
         if (id != null) {
             joiner.add("id: " + GraphQLRequestSerializer.getEntry(id));
         }
@@ -80,6 +92,7 @@ public class ChannelGroup implements java.io.Serializable, Node {
     public static class Builder {
 
         private int annictId;
+        private ChannelConnection channels;
         private String id;
         private String name;
         private int sortNumber;
@@ -89,6 +102,11 @@ public class ChannelGroup implements java.io.Serializable, Node {
 
         public Builder setAnnictId(int annictId) {
             this.annictId = annictId;
+            return this;
+        }
+
+        public Builder setChannels(ChannelConnection channels) {
+            this.channels = channels;
             return this;
         }
 
@@ -112,7 +130,7 @@ public class ChannelGroup implements java.io.Serializable, Node {
 
 
         public ChannelGroup build() {
-            return new ChannelGroup(annictId, id, name, sortNumber);
+            return new ChannelGroup(annictId, channels, id, name, sortNumber);
         }
 
     }

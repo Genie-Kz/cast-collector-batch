@@ -12,6 +12,7 @@ public class WorkImage implements java.io.Serializable, Node {
     private String facebookOgImageUrl;
     @jakarta.validation.constraints.NotNull
     private String id;
+    private String internalUrl;
     private String recommendedImageUrl;
     private String twitterAvatarUrl;
     private String twitterBiggerAvatarUrl;
@@ -22,11 +23,12 @@ public class WorkImage implements java.io.Serializable, Node {
     public WorkImage() {
     }
 
-    public WorkImage(Integer annictId, String copyright, String facebookOgImageUrl, String id, String recommendedImageUrl, String twitterAvatarUrl, String twitterBiggerAvatarUrl, String twitterMiniAvatarUrl, String twitterNormalAvatarUrl, Work work) {
+    public WorkImage(Integer annictId, String copyright, String facebookOgImageUrl, String id, String internalUrl, String recommendedImageUrl, String twitterAvatarUrl, String twitterBiggerAvatarUrl, String twitterMiniAvatarUrl, String twitterNormalAvatarUrl, Work work) {
         this.annictId = annictId;
         this.copyright = copyright;
         this.facebookOgImageUrl = facebookOgImageUrl;
         this.id = id;
+        this.internalUrl = internalUrl;
         this.recommendedImageUrl = recommendedImageUrl;
         this.twitterAvatarUrl = twitterAvatarUrl;
         this.twitterBiggerAvatarUrl = twitterBiggerAvatarUrl;
@@ -67,6 +69,13 @@ public class WorkImage implements java.io.Serializable, Node {
      */
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getInternalUrl() {
+        return internalUrl;
+    }
+    public void setInternalUrl(String internalUrl) {
+        this.internalUrl = internalUrl;
     }
 
     public String getRecommendedImageUrl() {
@@ -127,6 +136,9 @@ public class WorkImage implements java.io.Serializable, Node {
         if (id != null) {
             joiner.add("id: " + GraphQLRequestSerializer.getEntry(id));
         }
+        if (internalUrl != null) {
+            joiner.add("internalUrl: " + GraphQLRequestSerializer.getEntry(internalUrl));
+        }
         if (recommendedImageUrl != null) {
             joiner.add("recommendedImageUrl: " + GraphQLRequestSerializer.getEntry(recommendedImageUrl));
         }
@@ -158,6 +170,7 @@ public class WorkImage implements java.io.Serializable, Node {
         private String copyright;
         private String facebookOgImageUrl;
         private String id;
+        private String internalUrl;
         private String recommendedImageUrl;
         private String twitterAvatarUrl;
         private String twitterBiggerAvatarUrl;
@@ -188,6 +201,11 @@ public class WorkImage implements java.io.Serializable, Node {
          */
         public Builder setId(String id) {
             this.id = id;
+            return this;
+        }
+
+        public Builder setInternalUrl(String internalUrl) {
+            this.internalUrl = internalUrl;
             return this;
         }
 
@@ -223,7 +241,7 @@ public class WorkImage implements java.io.Serializable, Node {
 
 
         public WorkImage build() {
-            return new WorkImage(annictId, copyright, facebookOgImageUrl, id, recommendedImageUrl, twitterAvatarUrl, twitterBiggerAvatarUrl, twitterMiniAvatarUrl, twitterNormalAvatarUrl, work);
+            return new WorkImage(annictId, copyright, facebookOgImageUrl, id, internalUrl, recommendedImageUrl, twitterAvatarUrl, twitterBiggerAvatarUrl, twitterMiniAvatarUrl, twitterNormalAvatarUrl, work);
         }
 
     }

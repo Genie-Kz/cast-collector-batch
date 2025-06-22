@@ -142,6 +142,9 @@
 				<executions>
 					<execution>
 						<id>generate-sources-product-client</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
 						<configuration>
 							<graphqlSchemas>
 								<includePattern>schema\.graphql</includePattern>
@@ -157,6 +160,7 @@
 							<customTypesMapping>
 								<DateTime>java.time.OffsetDateTime</DateTime>
 							</customTypesMapping>
+							<generateParameterizedFieldsResolvers>false</generateParameterizedFieldsResolvers>
 							<addGeneratedAnnotation>false</addGeneratedAnnotation>
 							<generateClient>true</generateClient>
 							<modelValidationAnnotation>
