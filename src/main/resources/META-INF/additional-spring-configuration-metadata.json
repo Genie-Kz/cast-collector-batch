@@ -1,0 +1,14 @@
+{
+	"properties": [
+		{
+			"name": "annict.graphql.access-token",
+			"type": "java.lang.String",
+			"description": "The access token for the Annict GraphQL API."
+		},
+		{
+			"name": "annict.graphql.endpoint",
+			"type": "java.lang.String",
+			"description": "A description for 'annict.graphql.endpoint'"
+		}
+	]
+}
